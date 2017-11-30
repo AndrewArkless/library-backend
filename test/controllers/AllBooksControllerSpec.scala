@@ -19,8 +19,11 @@ class AllBooksControllerSpec extends PlaySpec with GuiceOneAppPerTest{
       status(response) mustBe 200
 
       val json = contentAsJson(response)
-      (json \ "title").as[String] mustBe "It"
-      (json \ "author").as[String] mustBe "Stephen King"
+      (json \"books"\0\"title").as[String] mustBe "It"
+      (json \"books"\0\"author").as[String] mustBe "Stephen King"
+      (json \"books"\1\"title").as[String] mustBe "Picnic at Hanging Rock"
+      (json \"books"\1\"author").as[String] mustBe "Joan Lindsay"
+
 
     }
     "calling getAllBooks URL" should {
@@ -31,11 +34,10 @@ class AllBooksControllerSpec extends PlaySpec with GuiceOneAppPerTest{
         status(response) mustBe 200
         contentType(response) mustBe Some("application/json")
         val json = contentAsJson(response)
-        println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa" +json )
-        (json \"books"\"title").as[String] mustBe "It"
-        (json \"books"\"author").as[String] mustBe "Stephen King"
-        (json \"books"\"title").as[String] mustBe "Picnic at Hanging Rock"
-        (json \"books"\"author").as[String] mustBe "Joan Lindsay"
+        (json \"books"\0\"title").as[String] mustBe "It"
+        (json \"books"\0\"author").as[String] mustBe "Stephen King"
+        (json \"books"\1\"title").as[String] mustBe "Picnic at Hanging Rock"
+        (json \"books"\1\"author").as[String] mustBe "Joan Lindsay"
 
       }
     }
