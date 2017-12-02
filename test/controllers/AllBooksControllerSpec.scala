@@ -17,7 +17,7 @@ class AllBooksControllerSpec extends PlaySpec with GuiceOneAppPerTest{
       val controller = new AllBooksController
       val response = controller.getAllBooks().apply(FakeRequest())
       status(response) mustBe 200
-
+      contentType(response) mustBe Some("application/json")
       val json = contentAsJson(response)
       (json \"books"\0\"title").as[String] mustBe "It"
       (json \"books"\0\"author").as[String] mustBe "Stephen King"
