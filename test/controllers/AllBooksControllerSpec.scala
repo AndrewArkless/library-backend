@@ -8,9 +8,6 @@ import play.api.test.Helpers._
 import play.core.routing.Route
 
 
-/**
-  * Created by andrew on 30/11/17.
-  */
 class AllBooksControllerSpec extends PlaySpec with GuiceOneAppPerTest{
   "calling getAllBooks" should {
     "return all books" in {
